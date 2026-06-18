@@ -1,393 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>FRENZYY | Soweto Street Couture</title>
-  <!-- Google Fonts: High-end modern sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (free icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #000000;
-      color: #F5E53A;
-      scroll-behavior: smooth;
-    }
-
-    /* custom yellow/black high-end touches */
-    .border-glow {
-      box-shadow: 0 0 10px rgba(245, 229, 58, 0.2);
-    }
-
-    .text-yellow-glow {
-      text-shadow: 0 0 8px rgba(245, 229, 58, 0.5);
-    }
-
-    .btn-hover {
-      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-
-    .btn-hover:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px -8px rgba(245, 229, 58, 0.3);
-      background: #F5E53A;
-      color: #000000;
-      border-color: #F5E53A;
-    }
-
-    .card-hover {
-      transition: transform 0.4s ease, box-shadow 0.3s ease;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 35px -12px rgba(245, 229, 58, 0.2);
-    }
-
-    /* custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0a0a0a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #F5E53A;
-      border-radius: 10px;
-    }
-
-    /* hero parallax effect */
-    .hero-bg {
-      background: radial-gradient(circle at 20% 30%, #1a1a0a, #000000);
-      position: relative;
-    }
-
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: repeating-linear-gradient(45deg, rgba(245,229,58,0.02) 0px, rgba(245,229,58,0.02) 2px, transparent 2px, transparent 8px);
-      pointer-events: none;
-    }
-
-    .yellow-filter {
-      filter: drop-shadow(0 0 3px #F5E53A);
-    }
-  </style>
-</head>
-<body class="antialiased">
-
-  <!-- Navigation - minimal high end -->
-  <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-black/80 border-b border-yellow-600/30 py-4 px-6 md:px-12 transition-all duration-300">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <!-- Logo mark -->
-      <a href="#" class="text-2xl md:text-3xl font-black tracking-tighter">
-        <span class="text-[#F5E53A]">FRENZYY</span>
-        <span class="text-white text-sm font-medium tracking-wide ml-1 align-top">®</span>
-      </a>
-      
-      <!-- Desktop menu -->
-      <div class="hidden md:flex space-x-10 text-sm font-semibold uppercase tracking-wider">
-        <a href="#home" class="text-white hover:text-[#F5E53A] transition-colors duration-200">Home</a>
-        <a href="#collection" class="text-white hover:text-[#F5E53A] transition-colors duration-200">Archive</a>
-        <a href="#story" class="text-white hover:text-[#F5E53A] transition-colors duration-200">Origin</a>
-        <a href="#shop" class="text-white hover:text-[#F5E53A] transition-colors duration-200">Drop</a>
-      </div>
-      
-      <!-- icon group -->
-      <div class="flex items-center gap-5">
-        <i class="fa-regular fa-user text-white hover:text-[#F5E53A] cursor-pointer transition text-lg"></i>
-        <i class="fa-regular fa-bag-shopping text-white hover:text-[#F5E53A] cursor-pointer transition text-lg"></i>
-        <div class="md:hidden">
-          <i class="fa-solid fa-bars text-white text-xl"></i>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <main>
-    <!-- Hero Section: bold Soweto Energy -->
-    <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden pt-20">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-32 grid md:grid-cols-2 gap-12 items-center">
-        <div class="z-10 space-y-6">
-          <div class="inline-block px-4 py-1 border border-[#F5E53A]/40 rounded-full text-xs tracking-wider bg-black/40 backdrop-blur-sm">
-            <i class="fa-solid fa-location-dot text-[#F5E53A] mr-1"></i> SOWETO // JHB
-          </div>
-          <h1 class="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.1] tracking-tighter">
-            <span class="text-white">STREET</span><br>
-            <span class="text-[#F5E53A]">COUTURE</span>
-          </h1>
-          <p class="text-gray-300 text-base md:text-lg max-w-md leading-relaxed border-l-4 border-[#F5E53A] pl-4">
-            FRENZYY merges raw Soweto energy with high-end tailoring. Limited drops, bold identity, unapologetic black & yellow.
-          </p>
-          <div class="flex flex-wrap gap-5 pt-4">
-            <a href="#shop" class="bg-[#F5E53A] text-black font-bold px-8 py-4 rounded-none tracking-wide uppercase text-sm hover:bg-white transition-all shadow-lg shadow-yellow-900/30 btn-hover">SHOP NOW</a>
-            <a href="#story" class="border border-[#F5E53A] text-[#F5E53A] px-8 py-4 rounded-none uppercase text-sm font-semibold hover:bg-[#F5E53A] hover:text-black transition-all">DISCOVER</a>
-          </div>
-          <div class="flex space-x-6 pt-10 text-white/60 text-sm">
-            <div class="flex items-center gap-2"><i class="fa-solid fa-truck-fast text-[#F5E53A]"></i> Worldwide shipping</div>
-            <div class="flex items-center gap-2"><i class="fa-regular fa-gem text-[#F5E53A]"></i> Limited edition</div>
-          </div>
-        </div>
-        <div class="relative flex justify-center md:justify-end z-10">
-          <div class="relative w-80 h-96 md:w-[450px] md:h-[500px] bg-gradient-to-br from-yellow-900/30 to-black border border-yellow-500/40 shadow-2xl rotate-3 overflow-hidden">
-            <img src="https://placehold.co/600x800/111111/F5E53A?text=FRENZYY+HERO&font=montserrat" alt="FRENZYY signature piece" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-700">
-            <div class="absolute -bottom-6 -left-6 bg-black/90 border border-[#F5E53A] p-4 backdrop-blur-md">
-              <p class="text-[#F5E53A] text-xs tracking-wider">EDITION 001</p>
-              <p class="text-white font-bold">"VOICES OF SOWETO"</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- decorative diagonal lines -->
-      <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent"></div>
-    </section>
-
-    <!-- Collection Preview / Signature looks (high-end minimal) -->
-    <section id="collection" class="py-24 bg-black">
-      <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="text-center mb-16">
-          <span class="text-[#F5E53A] text-sm uppercase tracking-[0.3em] font-semibold">The Archive</span>
-          <h2 class="text-4xl md:text-5xl font-bold text-white mt-3">Signature Silhouettes</h2>
-          <div class="w-20 h-0.5 bg-[#F5E53A] mx-auto mt-5"></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Item 1 -->
-          <div class="group bg-zinc-900 border border-zinc-800 hover:border-[#F5E53A]/60 transition-all duration-300 card-hover">
-            <div class="overflow-hidden h-80 bg-black">
-              <img src="https://placehold.co/600x800/1a1a1a/F5E53A?text=OVERSIZED+HOODIE&font=montserrat" alt="FRENZYY hoodie" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h3 class="text-white font-bold text-xl">"FLAME" Hoodie</h3>
-                  <p class="text-gray-400 text-sm mt-1">Limited run • Heavy fleece</p>
-                </div>
-                <span class="text-[#F5E53A] font-bold">R 1 299</span>
-              </div>
-              <div class="mt-4 flex items-center justify-between">
-                <div class="flex space-x-1 text-yellow-500 text-xs">
-                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                </div>
-                <a href="#" class="text-xs font-semibold uppercase tracking-wider text-[#F5E53A] border-b border-[#F5E53A] pb-0.5 hover:text-white hover:border-white transition">pre-order →</a>
-              </div>
-            </div>
-          </div>
-          <!-- Item 2 -->
-          <div class="group bg-zinc-900 border border-zinc-800 hover:border-[#F5E53A]/60 transition-all duration-300 card-hover">
-            <div class="overflow-hidden h-80 bg-black">
-              <img src="https://placehold.co/600x800/111111/F5E53A?text=CARGO+PANTS&font=montserrat" alt="FRENZYY cargos" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h3 class="text-white font-bold text-xl">Cargo "Soweto"</h3>
-                  <p class="text-gray-400 text-sm mt-1">Utility fit • Premium cotton</p>
-                </div>
-                <span class="text-[#F5E53A] font-bold">R 1 899</span>
-              </div>
-              <div class="mt-4 flex items-center justify-between">
-                <div class="flex space-x-1 text-yellow-500 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i></div>
-                <a href="#" class="text-xs font-semibold uppercase tracking-wider text-[#F5E53A] border-b border-[#F5E53A] pb-0.5 hover:text-white">shop →</a>
-              </div>
-            </div>
-          </div>
-          <!-- Item 3 -->
-          <div class="group bg-zinc-900 border border-zinc-800 hover:border-[#F5E53A]/60 transition-all duration-300 card-hover">
-            <div class="overflow-hidden h-80 bg-black">
-              <img src="https://placehold.co/600x800/1a1a1a/F5E53A?text=DENIM+JACKET&font=montserrat" alt="FRENZYY denim jacket" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-            </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h3 class="text-white font-bold text-xl">Vitesse Jacket</h3>
-                  <p class="text-gray-400 text-sm mt-1">Hand-finished • Yellow stitches</p>
-                </div>
-                <span class="text-[#F5E53A] font-bold">R 2 499</span>
-              </div>
-              <div class="mt-4 flex items-center justify-between">
-                <div class="flex space-x-1 text-yellow-500 text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                <a href="#" class="text-xs font-semibold uppercase tracking-wider text-[#F5E53A] border-b border-[#F5E53A] pb-0.5 hover:text-white">explore →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- The Story: Soweto roots, Young designer -->
-    <section id="story" class="py-24 bg-gradient-to-b from-black to-zinc-950">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-14 items-center">
-        <div class="order-2 md:order-1 space-y-6">
-          <div class="inline-block px-4 py-1 bg-yellow-900/20 border-l-4 border-[#F5E53A]">
-            <span class="text-[#F5E53A] text-xs font-bold uppercase tracking-wider">The Visionary</span>
-          </div>
-          <h2 class="text-4xl md:text-5xl font-bold text-white leading-tight">Born in Soweto,<br>built for the world.</h2>
-          <p class="text-gray-300 text-base leading-relaxed">FRENZYY isn't just a label — it's a movement. Conceived by a 22-year-old creative from the heart of Soweto, every stitch echoes the vibrant contrast of Jo'burg nights and the electric yellow energy of aspiration. Black represents the raw streets, Yellow is the fire of tomorrow.</p>
-          <p class="text-gray-400 text-sm">From Orlando East to international drops — luxury meets township authenticity. Each piece is made in limited quantities, ensuring that FRENZYY remains an emblem of rare self-expression.</p>
-          <div class="pt-4 flex gap-3 items-center">
-            <div class="w-12 h-12 rounded-full bg-[#F5E53A]/20 flex items-center justify-center"><i class="fa-solid fa-quote-right text-[#F5E53A] text-xl"></i></div>
-            <p class="text-white italic text-sm max-w-sm">"FRENZYY is the voice of those who dare to exist in full color, even when the world sees only shadow." — Founder, T. Nkosi</p>
-          </div>
-        </div>
-        <div class="order-1 md:order-2 relative flex justify-center">
-          <div class="relative w-full max-w-sm md:max-w-md">
-            <div class="absolute -top-5 -left-5 w-24 h-24 border-t-2 border-l-2 border-[#F5E53A]"></div>
-            <img src="https://placehold.co/700x800/000000/F5E53A?text=FRENZYY+DESIGNER+PORTRAIT&font=montserrat" alt="Young designer from Soweto" class="w-full h-auto object-cover grayscale-[0.2] contrast-125 shadow-2xl">
-            <div class="absolute -bottom-5 -right-5 w-24 h-24 border-b-2 border-r-2 border-[#F5E53A]"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Shop Drop / Featured capsule - high end product grid -->
-    <section id="shop" class="py-24 bg-black">
-      <div class="max-w-7xl mx-auto px-6 md:px-12">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-          <div>
-            <p class="text-[#F5E53A] text-sm tracking-widest font-semibold">DROP 003 — THE SAWTOOTH COLLECTION</p>
-            <h2 class="text-3xl md:text-5xl font-black text-white mt-2">Available now</h2>
-          </div>
-          <a href="#" class="group flex items-center gap-2 text-white border-b border-[#F5E53A] pb-1 text-sm font-medium hover:text-[#F5E53A] transition">View full collection <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition"></i></a>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- product 1 -->
-          <div class="bg-zinc-900/50 border border-zinc-800 p-5 hover:border-[#F5E53A]/40 transition-all card-hover">
-            <div class="h-64 bg-black mb-4 overflow-hidden flex items-center justify-center">
-              <img src="https://placehold.co/500x600/121212/F5E53A?text=TEE+FRENZYY&font=montserrat" class="w-full h-full object-cover transition hover:scale-105 duration-500">
-            </div>
-            <h3 class="text-white font-bold text-lg">"Yellow Fangs" Tee</h3>
-            <div class="flex justify-between items-center mt-2">
-              <span class="text-[#F5E53A] font-bold">R 699</span>
-              <span class="text-xs text-gray-500">S-XXL</span>
-            </div>
-            <button class="w-full mt-4 bg-transparent border border-[#F5E53A] py-2 text-[#F5E53A] text-sm font-semibold hover:bg-[#F5E53A] hover:text-black transition">ADD TO CART</button>
-          </div>
-          <!-- product 2 -->
-          <div class="bg-zinc-900/50 border border-zinc-800 p-5 hover:border-[#F5E53A]/40 transition-all card-hover">
-            <div class="h-64 bg-black mb-4 overflow-hidden flex items-center justify-center">
-              <img src="https://placehold.co/500x600/111111/F5E53A?text=TRACK+PANTS&font=montserrat" class="w-full h-full object-cover transition hover:scale-105 duration-500">
-            </div>
-            <h3 class="text-white font-bold text-lg">Soweto Panther Pants</h3>
-            <div class="flex justify-between items-center mt-2">
-              <span class="text-[#F5E53A] font-bold">R 1 399</span>
-              <span class="text-xs text-gray-500">Limited</span>
-            </div>
-            <button class="w-full mt-4 bg-transparent border border-[#F5E53A] py-2 text-[#F5E53A] text-sm font-semibold hover:bg-[#F5E53A] hover:text-black transition">ADD TO CART</button>
-          </div>
-          <!-- product 3 -->
-          <div class="bg-zinc-900/50 border border-zinc-800 p-5 hover:border-[#F5E53A]/40 transition-all card-hover">
-            <div class="h-64 bg-black mb-4 overflow-hidden flex items-center justify-center">
-              <img src="https://placehold.co/500x600/1a1a1a/F5E53A?text=STREET+VEST&font=montserrat" class="w-full h-full object-cover transition hover:scale-105 duration-500">
-            </div>
-            <h3 class="text-white font-bold text-lg">Utility Vest "Noise"</h3>
-            <div class="flex justify-between items-center mt-2">
-              <span class="text-[#F5E53A] font-bold">R 1 799</span>
-              <span class="text-xs text-gray-500">Pre-order</span>
-            </div>
-            <button class="w-full mt-4 bg-transparent border border-[#F5E53A] py-2 text-[#F5E53A] text-sm font-semibold hover:bg-[#F5E53A] hover:text-black transition">NOTIFY ME</button>
-          </div>
-          <!-- product 4 bold -->
-          <div class="bg-zinc-900/50 border border-zinc-800 p-5 hover:border-[#F5E53A]/40 transition-all card-hover relative overflow-hidden">
-            <div class="absolute top-2 right-2 bg-[#F5E53A] text-black text-[10px] font-bold px-2 py-0.5 rotate-12">LIMITED</div>
-            <div class="h-64 bg-black mb-4 overflow-hidden flex items-center justify-center">
-              <img src="https://placehold.co/500x600/000000/F5E53A?text=BOMBER+JACKET&font=montserrat" class="w-full h-full object-cover transition hover:scale-105 duration-500">
-            </div>
-            <h3 class="text-white font-bold text-lg">"FRENZYY" Bomber</h3>
-            <div class="flex justify-between items-center mt-2">
-              <span class="text-[#F5E53A] font-bold">R 3 299</span>
-              <span class="text-xs text-gray-500">2 pieces left</span>
-            </div>
-            <button class="w-full mt-4 bg-[#F5E53A] text-black py-2 text-sm font-bold hover:bg-white transition">SECURE NOW →</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- newsletter & community signup -->
-    <section class="py-20 border-y border-yellow-900/30 bg-gradient-to-r from-black via-zinc-950 to-black">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <i class="fa-regular fa-envelope text-4xl text-[#F5E53A] mb-4"></i>
-        <h3 class="text-3xl md:text-4xl font-bold text-white">Join the Frenzy.</h3>
-        <p class="text-gray-300 mt-3 max-w-xl mx-auto">Exclusive access to early drops, Soweto studio sessions, and members-only gear.</p>
-        <form class="mt-8 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-          <input type="email" placeholder="Your email address" class="flex-1 px-5 py-3 bg-black border border-[#F5E53A]/40 text-white focus:outline-none focus:border-[#F5E53A] rounded-none">
-          <button type="submit" class="bg-[#F5E53A] text-black font-bold px-8 py-3 hover:bg-white transition-all uppercase tracking-wide text-sm">Subscribe</button>
-        </form>
-        <p class="text-gray-500 text-xs mt-5">No spam, only heat. Unsubscribe anytime.</p>
-      </div>
-    </section>
-
-    <!-- footer: high-end black & yellow -->
-    <footer class="bg-black pt-16 pb-10 border-t border-zinc-800">
-      <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-10">
-        <div class="space-y-4">
-          <span class="text-2xl font-black text-[#F5E53A]">FRENZYY</span>
-          <p class="text-gray-400 text-sm">A Soweto-born luxury streetwear house. For the renegades, the dreamers, the fearless.</p>
-          <div class="flex space-x-4 text-white">
-            <i class="fa-brands fa-instagram hover:text-[#F5E53A] cursor-pointer transition"></i>
-            <i class="fa-brands fa-x-twitter hover:text-[#F5E53A] cursor-pointer transition"></i>
-            <i class="fa-brands fa-tiktok hover:text-[#F5E53A] cursor-pointer transition"></i>
-            <i class="fa-brands fa-youtube hover:text-[#F5E53A] cursor-pointer transition"></i>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-white font-bold tracking-wider uppercase text-sm mb-4">Explore</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="#" class="hover:text-[#F5E53A] transition">New Arrivals</a></li>
-            <li><a href="#" class="hover:text-[#F5E53A] transition">Lookbook</a></li>
-            <li><a href="#" class="hover:text-[#F5E53A] transition">Behind the Seams</a></li>
-            <li><a href="#" class="hover:text-[#F5E53A] transition">Sustainability</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-white font-bold tracking-wider uppercase text-sm mb-4">Support</h4>
-          <ul class="space-y-2 text-gray-400 text-sm">
-            <li><a href="#" class="hover:text-[#F5E53A] transition">Shipping & Returns</a></li>
-            <li><a href="#" class="hover:text-[#F5E53A] transition">Size Guide</a></li>
-            <li><a href="#" class="hover:text-[#F5E53A] transition">FAQs</a></li>
-            <li><a href="#" class="hover:text-[#F5E53A] transition">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-white font-bold tracking-wider uppercase text-sm mb-4">Studio</h4>
-          <p class="text-gray-400 text-sm">1126 Ntemi Street, Orlando East<br>Soweto, Johannesburg<br>South Africa</p>
-          <p class="text-[#F5E53A] text-sm mt-3">hello@frenzyy.com</p>
-        </div>
-      </div>
-      <div class="text-center text-gray-600 text-xs pt-12 mt-8 border-t border-zinc-900">
-        © 2025 FRENZYY — All rights reserved. Proudly rooted in Soweto. <span class="text-[#F5E53A]">#FRENZYYMOVEMENT</span>
-      </div>
-    </footer>
-  </main>
-
-  <!-- simple mobile menu fallback (just minimal style) -->
-  <script>
-    // subtle smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if(targetId === "#") return;
-        const target = document.querySelector(targetId);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BROKE // SPECIAL BIRTHDAY DROP</title>
+    <style>
+        /* --- Streetwear Aesthetic CSS Variables --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #d63031; /* Bold Streetwear Red */
+            --gray-border: #e5e5e5;
+            --font-stack: 'Helvetica Neue', Arial, sans-serif;
         }
-      });
-    });
-    // tiny interactive console tag
-    console.log("FRENZYY — Soweto luxury fashion | Yellow & Black legacy");
-  </script>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-stack);
+            text-transform: uppercase; /* Hard streetwear styling */
+            letter-spacing: 0.1em;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            font-size: 14px;
+        }
+
+        /* --- Moving Marquee Banner --- */
+        .announcement-bar {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 10px 0;
+            font-size: 0.75rem;
+            font-weight: 700;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            border-bottom: 1px solid var(--text-color);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-content span {
+            margin-right: 50px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* --- Header / Navigation Bar --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 4%;
+            border-bottom: 2px solid var(--text-color);
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .nav-links span { cursor: pointer; }
+        .cart-icon { font-weight: 700; position: relative; }
+
+        /* --- Hero Banner / Lookbook Section --- */
+        .hero {
+            border-bottom: 2px solid var(--text-color);
+            padding: 60px 4%;
+            background-color: #fafafa;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: calc(2.5rem + 3vw);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 15px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #555;
+            line-height: 1.5;
+            text-transform: none; /* Keep text readable */
+            letter-spacing: 0;
+        }
+
+        /* --- Product Grid --- */
+        .catalog-title {
+            padding: 30px 4% 10px;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            border-top: 2px solid var(--text-color);
+        }
+
+        .product-card {
+            border-right: 1px solid var(--text-color);
+            border-bottom: 2px solid var(--text-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: white;
+            transition: background-color 0.2s;
+        }
+
+        .product-card:hover {
+            background-color: #fcfcfc;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 380px;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%); /* Streetwear lookbook edit */
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .image-container img {
+            transform: scale(1.03);
+        }
+
+        /* Brutalist Sold Out Overlay */
+        .sold-out-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 2px;
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .price {
+            color: var(--text-color);
+        }
+
+        .description {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: none;
+            letter-spacing: 0;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--text-color);
+            color: white;
+            border: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .buy-btn.disabled {
+            background-color: #e5e5e5;
+            color: #999;
+            cursor: not-allowed;
+            border: 1px solid #ccc;
+        }
+
+        /* --- Footer Section --- */
+        footer {
+            padding: 60px 4%;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .grid { grid-template-columns: 1fr; }
+            .product-card { border-right: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Banner Marquee (Like sobroke.online) -->
+    <div class="announcement-bar">
+        <div class="marquee-content">
+            <span>⚡ COMPLIMENTARY LOVING DROP FOR THE BEST GIRL OVER 2026 ⚡</span>
+            <span>HAPPY BIRTHDAY TO MY DAY ONE</span>
+            <span>⚡ REBELS, MISFITS, AND THE FLAME OF MY LIFE ⚡</span>
+            <span>LIMITLESS COLLECTION FOR YOU ONLY</span>
+            <!-- Duplicate content to ensure seamless loop -->
+            <span>⚡ COMPLIMENTARY LOVING DROP FOR THE BEST GIRL OVER 2026 ⚡</span>
+            <span>HAPPY BIRTHDAY TO MY DAY ONE</span>
+            <span>⚡ REBELS, MISFITS, AND THE FLAME OF MY LIFE ⚡</span>
+            <span>LIMITLESS COLLECTION FOR YOU ONLY</span>
+        </div>
+    </div>
+
+    <!-- Luxury Streetwear Header -->
+    <header>
+        <div class="logo">HBD.MY.LOVE</div>
+        <div class="nav-links">
+            <span>THREADS</span>
+            <span>ESSENTIALS</span>
+            <span>LOOKBOOK</span>
+            <span class="cart-icon">BAG (1)</span>
+        </div>
+    </header>
+
+    <!-- Hero Identity Statement -->
+    <section class="hero">
+        <h1>THE BIRTHDAY DROP</h1>
+        <p>Taking raw memories, inside jokes, and premium moments to build a completely unique visual setup. Inspired by your smile, your energy, and the way you override my whole outlook on life. This capsule collection is exclusively curated for you.</p>
+    </section>
+
+    <div class="catalog-title">CURRENT CATALOGUE // VOLUME 01</div>
+
+    <!-- Product Grid System (Static, No Backend Needed) -->
+    <main class="grid">
+
+        <!-- Piece 01 -->
+        <div class="product-card">
+            <div class="image-container">
+                <span class="sold-out-badge">SOLD OUT</span>
+                <!-- Replace with her photo, e.g., images/lookbook1.jpg -->
+                <img src="photo1.jpg" alt="Lookbook Shot 1">
+            </div>
+            <div class="product-info">
+                <div class="title">THE STAPLE MEMORY TEE</div>
+                <div class="price">R 999,99</div>
+            </div>
+            <div class="description">
+                Heavyweight premium fabric featuring the smile that shut down the room. Cut for an oversized look, tailored for my absolute favorite view.
+            </div>
+            <button class="buy-btn disabled">SECURED BY ME</button>
+        </div>
+
+        <!-- Piece 02 -->
+        <div class="product-card">
+            <div class="image-container">
+                <span class="sold-out-badge">SOLD OUT</span>
+                <!-- Replace with her photo, e.g., images/lookbook2.jpg -->
+                <img src="photo2.jpg" alt="Lookbook Shot 2">
+            </div>
+            <div class="product-info">
+                <div class="title">MAFIOSO TRACKSUIT CAP RE-RUN</div>
+                <div class="price">PRICELESS</div>
+            </div>
+            <div class="description">
+                A custom fit created for the one who always handles business. Featuring custom high-density stitching celebrating another loop around the sun.
+            </div>
+            <button class="buy-btn disabled">CLAIMED FOREVER</button>
+        </div>
+
+        <!-- Piece 03 -->
+        <div class="product-card">
+            <div class="image-container">
+                <span class="sold-out-badge">SOLD OUT</span>
+                <!-- Replace with her photo, e.g., images/lookbook3.jpg -->
+                <img src="photo3.jpg" alt="Lookbook Shot 3">
+            </div>
+            <div class="product-info">
+                <div class="title">ESSENTIAL HEIRLOOM JACKET</div>
+                <div class="price">R 1 200,00</div>
+            </div>
+            <div class="description">
+                Custom structured silhouette inspired by late-night drives and laughing until our lungs gave out. Defying the odds and matching expectations together.
+            </div>
+            <button class="buy-btn disabled">NOT FOR SALE</button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>JOIN THE FAMILY // HAPPY BIRTHDAY TO MY UNCONVENTIONAL RIDE OR DIE</p>
+        <p>© 2026 ALL INTELLECTUAL PROPERTY RESERVED TO US</p>
+    </footer>
+
 </body>
 </html>
