@@ -3,337 +3,415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BROKE // SPECIAL BIRTHDAY DROP</title>
+    <title>KULEILEE // FRENZYY OFFICIAL</title>
     <style>
-        /* --- Streetwear Aesthetic CSS Variables --- */
         :root {
             --bg-color: #ffffff;
             --text-color: #000000;
-            --accent-color: #d63031; /* Bold Streetwear Red */
-            --gray-border: #e5e5e5;
-            --font-stack: 'Helvetica Neue', Arial, sans-serif;
+            --accent-red: #d63031;
+            --gray-border: #000000;
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: 'Helvetica Neue', Arial, sans-serif;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: var(--font-stack);
-            text-transform: uppercase; /* Hard streetwear styling */
-            letter-spacing: 0.1em;
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             overflow-x: hidden;
-            font-size: 14px;
+            font-size: 13px;
         }
 
-        /* --- Moving Marquee Banner --- */
-        .announcement-bar {
+        /* --- Global Noise Overlay Effect --- */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle, transparent 20%, var(--bg-color) 100%), 
+                        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* --- Marquee --- */
+        .marquee {
             background-color: var(--text-color);
             color: var(--bg-color);
-            padding: 10px 0;
-            font-size: 0.75rem;
+            padding: 12px 0;
+            font-size: 0.7rem;
             font-weight: 700;
             overflow: hidden;
             white-space: nowrap;
-            position: relative;
             border-bottom: 1px solid var(--text-color);
         }
 
-        .marquee-content {
+        .marquee-inner {
             display: inline-block;
-            animation: marquee 20s linear infinite;
+            animation: marquee-run 25s linear infinite;
         }
 
-        .marquee-content span {
-            margin-right: 50px;
-        }
+        .marquee-inner span { margin-right: 60px; font-family: var(--font-mono); }
 
-        @keyframes marquee {
+        @keyframes marquee-run {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
         }
 
-        /* --- Header / Navigation Bar --- */
+        /* --- Navigation --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 4%;
+            padding: 25px 4%;
             border-bottom: 2px solid var(--text-color);
             position: sticky;
             top: 0;
-            background: white;
-            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
         }
 
-        .logo {
-            font-size: 1.8rem;
+        .brand-logo {
+            font-size: 1.6rem;
             font-weight: 900;
-            letter-spacing: -0.05em;
-            cursor: pointer;
+            letter-spacing: -0.04em;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
-            gap: 30px;
-            font-weight: 600;
-            font-size: 0.85rem;
+            gap: 35px;
         }
 
-        .nav-links span { cursor: pointer; }
-        .cart-icon { font-weight: 700; position: relative; }
-
-        /* --- Hero Banner / Lookbook Section --- */
-        .hero {
-            border-bottom: 2px solid var(--text-color);
-            padding: 60px 4%;
-            background-color: #fafafa;
-            text-align: center;
+        .nav-item {
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            font-size: 0.8rem;
+            background: none;
+            border: none;
         }
 
-        .hero h1 {
-            font-size: calc(2.5rem + 3vw);
-            font-weight: 900;
-            line-height: 0.9;
-            margin-bottom: 15px;
-            letter-spacing: -0.03em;
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0; width: 0; height: 2px;
+            background-color: var(--text-color);
+            transition: width 0.25s ease;
         }
 
-        .hero p {
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            color: #555;
-            line-height: 1.5;
-            text-transform: none; /* Keep text readable */
-            letter-spacing: 0;
+        .nav-item:hover::after, .nav-item.active::after {
+            width: 100%;
         }
 
-        /* --- Product Grid --- */
-        .catalog-title {
-            padding: 30px 4% 10px;
-            font-size: 1.2rem;
-            font-weight: 800;
+        /* --- App Views --- */
+        .view-section {
+            display: none;
+            min-height: 80vh;
         }
 
-        .grid {
+        .view-section.active-view {
+            display: block;
+        }
+
+        /* --- Catalog/Products Grid --- */
+        .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            border-top: 2px solid var(--text-color);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            border-bottom: 2px solid var(--text-color);
         }
 
-        .product-card {
+        .product-tile {
             border-right: 1px solid var(--text-color);
-            border-bottom: 2px solid var(--text-color);
-            padding: 20px;
+            border-bottom: 1px solid var(--text-color);
+            padding: 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background: white;
-            transition: background-color 0.2s;
+            background: #fff;
         }
 
-        .product-card:hover {
-            background-color: #fcfcfc;
-        }
-
-        .image-container {
+        .media-box {
             width: 100%;
-            height: 380px;
-            background-color: #f0f0f0;
+            height: 420px;
+            background-color: #f7f7f7;
             overflow: hidden;
-            margin-bottom: 15px;
             position: relative;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
         }
 
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(20%); /* Streetwear lookbook edit */
-            transition: transform 0.4s ease;
+        .media-box img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .product-card:hover .image-container img {
-            transform: scale(1.03);
+        .product-tile:hover .media-box img {
+            transform: scale(1.04);
         }
 
-        /* Brutalist Sold Out Overlay */
-        .sold-out-badge {
+        .status-tag {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 5px 12px;
-            font-size: 0.75rem;
+            top: 15px; left: 15px;
+            background: var(--text-color);
+            color: var(--bg-color);
+            padding: 6px 14px;
+            font-size: 0.65rem;
             font-weight: 700;
-            border-radius: 2px;
+            font-family: var(--font-mono);
         }
 
-        .product-info {
+        .status-tag.sold-out {
+            background: var(--accent-red);
+        }
+
+        .meta-row {
             display: flex;
             justify-content: space-between;
-            font-weight: 700;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            font-size: 1rem;
         }
 
-        .price {
+        .item-desc {
+            font-size: 0.8rem;
+            color: #555;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .action-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--text-color);
+            color: var(--bg-color);
+            font-weight: 700;
+            border: 1px solid var(--text-color);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .action-btn:hover {
+            background: transparent;
             color: var(--text-color);
         }
 
-        .description {
-            font-size: 0.8rem;
-            color: #666;
-            text-transform: none;
-            letter-spacing: 0;
-            margin-bottom: 15px;
-            line-height: 1.4;
-        }
-
-        .buy-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--text-color);
-            color: white;
-            border: none;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .buy-btn.disabled {
-            background-color: #e5e5e5;
-            color: #999;
-            cursor: not-allowed;
-            border: 1px solid #ccc;
-        }
-
-        /* --- Footer Section --- */
-        footer {
+        /* --- Themes / Concepts View --- */
+        .themes-header {
             padding: 60px 4%;
-            background-color: #000;
+            border-bottom: 2px solid var(--text-color);
+            background: #fafafa;
+        }
+
+        .themes-header h2 { font-size: 2.5rem; font-weight: 900; }
+
+        .theme-strip {
+            display: flex;
+            border-bottom: 1px solid var(--text-color);
+            cursor: pointer;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .theme-strip:hover { background: #f5f5f5; }
+
+        .theme-num {
+            padding: 40px;
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            border-right: 1px solid var(--text-color);
+        }
+
+        .theme-title {
+            padding-left: 40px;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        /* --- Effects Panel View --- */
+        .effects-container {
+            padding: 60px 4%;
+            max-width: 800px;
+        }
+
+        .effects-container h2 { font-size: 2rem; margin-bottom: 20px; }
+
+        .control-box {
+            border: 1px solid var(--text-color);
+            padding: 25px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 80px 4%;
+            background: #000;
             color: #fff;
-            text-align: center;
-            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
         }
 
-        footer p {
-            margin-bottom: 10px;
-            color: #aaa;
-        }
+        footer span { font-family: var(--font-mono); color: #666; }
 
-        /* Responsive Fixes */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .grid { grid-template-columns: 1fr; }
-            .product-card { border-right: none; }
+            header { flex-direction: column; gap: 15px; }
+            .grid-layout { grid-template-columns: 1fr; }
+            footer { flex-direction: column; gap: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Banner Marquee (Like sobroke.online) -->
-    <div class="announcement-bar">
-        <div class="marquee-content">
-            <span>⚡ COMPLIMENTARY LOVING DROP FOR THE BEST GIRL OVER 2026 ⚡</span>
-            <span>HAPPY BIRTHDAY TO MY DAY ONE</span>
-            <span>⚡ REBELS, MISFITS, AND THE FLAME OF MY LIFE ⚡</span>
-            <span>LIMITLESS COLLECTION FOR YOU ONLY</span>
-            <!-- Duplicate content to ensure seamless loop -->
-            <span>⚡ COMPLIMENTARY LOVING DROP FOR THE BEST GIRL OVER 2026 ⚡</span>
-            <span>HAPPY BIRTHDAY TO MY DAY ONE</span>
-            <span>⚡ REBELS, MISFITS, AND THE FLAME OF MY LIFE ⚡</span>
-            <span>LIMITLESS COLLECTION FOR YOU ONLY</span>
+    <div class="noise-overlay" id="noiseLayer"></div>
+
+    <div class="marquee">
+        <div class="marquee-inner">
+            <span>// KULEILEE INDUSTRIAL DIVISION //</span>
+            <span>FRENZYY APPAREL DROP 2026</span>
+            <span>STRICTLY SPECIFICATION DESIGN UNTOLD</span>
+            <span>// KULEILEE INDUSTRIAL DIVISION //</span>
+            <span>FRENZYY APPAREL DROP 2026</span>
         </div>
     </div>
 
-    <!-- Luxury Streetwear Header -->
     <header>
-        <div class="logo">HBD.MY.LOVE</div>
-        <div class="nav-links">
-            <span>THREADS</span>
-            <span>ESSENTIALS</span>
-            <span>LOOKBOOK</span>
-            <span class="cart-icon">BAG (1)</span>
-        </div>
+        <div class="brand-logo">KULEILEE // FRENZYY</div>
+        <nav class="nav-menu">
+            <button class="nav-item active" onclick="switchView('products')">Drops</button>
+            <button class="nav-item" onclick="switchView('themes')">Themes</button>
+            <button class="nav-item" onclick="switchView('effects')">Fx Engine</button>
+        </nav>
     </header>
 
-    <!-- Hero Identity Statement -->
-    <section class="hero">
-        <h1>THE BIRTHDAY DROP</h1>
-        <p>Taking raw memories, inside jokes, and premium moments to build a completely unique visual setup. Inspired by your smile, your energy, and the way you override my whole outlook on life. This capsule collection is exclusively curated for you.</p>
+    <!-- VIEW 1: PRODUCTS DISPLAY -->
+    <section id="view-products" class="view-section active-view">
+        <main class="grid-layout" id="products-target">
+            <!-- Dynamic Injection Area -->
+        </main>
     </section>
 
-    <div class="catalog-title">CURRENT CATALOGUE // VOLUME 01</div>
-
-    <!-- Product Grid System (Static, No Backend Needed) -->
-    <main class="grid">
-
-        <!-- Piece 01 -->
-        <div class="product-card">
-            <div class="image-container">
-                <span class="sold-out-badge">SOLD OUT</span>
-                <!-- Replace with her photo, e.g., images/lookbook1.jpg -->
-                <img src="photo1.jpg" alt="Lookbook Shot 1">
-            </div>
-            <div class="product-info">
-                <div class="title">THE STAPLE MEMORY TEE</div>
-                <div class="price">R 999,99</div>
-            </div>
-            <div class="description">
-                Heavyweight premium fabric featuring the smile that shut down the room. Cut for an oversized look, tailored for my absolute favorite view.
-            </div>
-            <button class="buy-btn disabled">SECURED BY ME</button>
+    <!-- VIEW 2: THEMES / ARCHIVE -->
+    <section id="view-themes" class="view-section">
+        <div class="themes-header">
+            <h2>SEASONAL SCHEMATICS</h2>
         </div>
-
-        <!-- Piece 02 -->
-        <div class="product-card">
-            <div class="image-container">
-                <span class="sold-out-badge">SOLD OUT</span>
-                <!-- Replace with her photo, e.g., images/lookbook2.jpg -->
-                <img src="photo2.jpg" alt="Lookbook Shot 2">
-            </div>
-            <div class="product-info">
-                <div class="title">MAFIOSO TRACKSUIT CAP RE-RUN</div>
-                <div class="price">PRICELESS</div>
-            </div>
-            <div class="description">
-                A custom fit created for the one who always handles business. Featuring custom high-density stitching celebrating another loop around the sun.
-            </div>
-            <button class="buy-btn disabled">CLAIMED FOREVER</button>
+        <div id="themes-target">
+            <!-- Dynamic Injection Area -->
         </div>
+    </section>
 
-        <!-- Piece 03 -->
-        <div class="product-card">
-            <div class="image-container">
-                <span class="sold-out-badge">SOLD OUT</span>
-                <!-- Replace with her photo, e.g., images/lookbook3.jpg -->
-                <img src="photo3.jpg" alt="Lookbook Shot 3">
+    <!-- VIEW 3: EFFECTS CONFIGURATION -->
+    <section id="view-effects" class="view-section">
+        <div class="effects-container">
+            <h2>VISUAL CONFIGURATION PANEL</h2>
+            <div class="control-box">
+                <div>
+                    <h3>Film Grain Overlay</h3>
+                    <p style="text-transform: none; color: #666; margin-top: 5px;">Toggle digital noise rendering</p>
+                </div>
+                <button class="action-btn" style="width: auto; padding: 10px 20px;" onclick="toggleNoise()">TOGGLE</button>
             </div>
-            <div class="product-info">
-                <div class="title">ESSENTIAL HEIRLOOM JACKET</div>
-                <div class="price">R 1 200,00</div>
+            <div class="control-box">
+                <div>
+                    <h3>Monochrome Shift</h3>
+                    <p style="text-transform: none; color: #666; margin-top: 5px;">Force asset grayscale</p>
+                </div>
+                <button class="action-btn" style="width: auto; padding: 10px 20px;" onclick="toggleGrayscale()">TOGGLE</button>
             </div>
-            <div class="description">
-                Custom structured silhouette inspired by late-night drives and laughing until our lungs gave out. Defying the odds and matching expectations together.
-            </div>
-            <button class="buy-btn disabled">NOT FOR SALE</button>
         </div>
+    </section>
 
-    </main>
-
-    <!-- Footer -->
     <footer>
-        <p>JOIN THE FAMILY // HAPPY BIRTHDAY TO MY UNCONVENTIONAL RIDE OR DIE</p>
-        <p>© 2026 ALL INTELLECTUAL PROPERTY RESERVED TO US</p>
+        <div>©2026 KULEILEE / FRENZYY DEPT.</div>
+        <span>SYSTEM VERSION 1.0.0_STATIC</span>
     </footer>
 
+    <!-- DATA ARRAYS AND SPA ROUTING ENGINE -->
+    <script>
+        // --- High-End Client Side Database Array ---
+        const catalogData = [
+            { id: 1, title: "Oversized Heavyweight Hood", price: "R 1,499.00", status: "AVAILABLE", img: "photo1.jpg", desc: "450GSM loopback cotton fleece. Brutalist box cut silhouette with structural shoulder drops." },
+            { id: 2, title: "Cargo Technical Pant", price: "R 1,850.00", status: "SOLD OUT", img: "photo2.jpg", desc: "Water-repellent technical canvas fabric featuring articulated knee layouts and dual hardware clips." },
+            { id: 3, title: "Graphite Box Tee", price: "R 750.00", status: "AVAILABLE", img: "photo3.jpg", desc: "Premium combed cotton jersey base with high-density clean screen-print text hits." }
+        ];
+
+        const themesData = [
+            { num: "01", title: "Industrial Brutalism Concepts" },
+            { num: "02", title: "Cyber-Structural Hardware" },
+            { num: "03", title: "Minimalist Grid Realities" }
+        ];
+
+        // --- SPA Template Render Engine ---
+        function initApp() {
+            // Render Products
+            const pTarget = document.getElementById('products-target');
+            pTarget.innerHTML = catalogData.map(item => `
+                <div class="product-tile">
+                    <div class="media-box">
+                        <span class="status-tag ${item.status === 'SOLD OUT' ? 'sold-out' : ''}">${item.status}</span>
+                        <img src="${item.img}" alt="${item.title}" class="product-image">
+                    </div>
+                    <div>
+                        <div class="meta-row">
+                            <div>${item.title}</div>
+                            <div style="font-family: 'Courier New'">${item.price}</div>
+                        </div>
+                        <div class="item-desc">${item.desc}</div>
+                        <button class="action-btn" ${item.status === 'SOLD OUT' ? 'disabled style="background:#ccc; border-color:#ccc; color:#777; cursor:not-allowed;"' : ''}>
+                            ${item.status === 'SOLD OUT' ? 'OUT OF STOCK' : 'ADD TO BAG'}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Themes
+            const tTarget = document.getElementById('themes-target');
+            tTarget.innerHTML = themesData.map(t => `
+                <div class="theme-strip">
+                    <div class="theme-num">${t.num}</div>
+                    <div class="theme-title">${t.title}</div>
+                </div>
+            `).join('');
+        }
+
+        // --- SPA Tab Switcher ---
+        function switchView(viewId) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active-view'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+
+            document.getElementById(`view-${viewId}`).classList.add('active-view');
+            event.target.classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // --- Visual Effects Engine Toggles ---
+        function toggleNoise() {
+            const noise = document.getElementById('noiseLayer');
+            noise.style.display = noise.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function toggleGrayscale() {
+            const imgs = document.querySelectorAll('.product-image');
+            imgs.forEach(img => {
+                img.style.filter = img.style.filter === 'grayscale(100%)' ? 'none' : 'grayscale(100%)';
+            });
+        }
+
+        // Run Build Setup
+        window.onload = initApp;
+    </script>
 </body>
 </html>
